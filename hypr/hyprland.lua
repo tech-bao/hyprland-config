@@ -35,7 +35,7 @@ hl.on("hyprland.start", function ()
    hl.exec_cmd("wl-paste --type text --watch cliphist store")
    hl.exec_cmd("wl-paste --type image --watch cliphist store")
    hl.exec_cmd("/usr/libexec/polkit-mate-authentication-agent-1")
-   hl.exec_cmd("nm-applet --indicator & waybar & hypridle & hyprpaper & fcitx5 --replace -d & blueman-applet")
+   hl.exec_cmd("nm-applet --indicator & waybar & hypridle & wpaperd -d & fcitx5 --replace -d & blueman-applet")
  end)
 
 
@@ -266,7 +266,10 @@ hl.bind(mainMod .. " + A", hl.dsp.exec_cmd("pkill wofi || wofi --show drun"))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))    -- 只作用 dwindle
 
-hl.bind(mainMod .. " + Z", hl.dsp.exec_cmd("$HOME/.config/hypr/scripts/wallpaper.sh"))
+-- hl.bind(mainMod .. " + Z", hl.dsp.exec_cmd("$HOME/.config/hypr/scripts/wallpaper.sh"))
+hl.bind(mainMod .. " + Page_Up", hl.dsp.exec_cmd("wpaperctl previous"))
+hl.bind(mainMod .. " + Page_Down", hl.dsp.exec_cmd("wpaperctl next"))
+hl.bind(mainMod .. " + Z", hl.dsp.exec_cmd("wpaperctl toggle-pause"))
 hl.bind(mainMod .. " + SLASH", hl.dsp.exec_cmd("kitty -e less ~/.config/hypr/keybinds.md"))
 hl.bind(mainMod .. " + W", hl.dsp.exec_cmd("firefox"))
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprlock"))
