@@ -1,0 +1,165 @@
+/* 全局 */
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "Maple Mono CN", "Fira Code";
+    font-size: 16px;
+}
+
+/* 整条状态栏 */
+window#waybar {
+    background: rgba(0, 0, 0, 0);
+}
+
+/* 模块整体 */
+.modules-left,
+.modules-center,
+.modules-right {
+    background-color: rgba(0, 0, 0, 0.26);
+    border-radius: 9px;
+/*  margin: 6px 6px;
+    padding: 0 3px;  */
+    color: #cdd6f4;
+}
+
+/* 按钮状态 */
+button {
+	/* 使用内阴影替代边框，避免文字偏移 */
+	box-shadow: inset 0 -0.1px transparent;
+	/* 避免在每个按钮名称下方出现圆角边框 */
+	border: none;
+	border-radius: 9px;
+	color: #cdd6f4;
+	margin: 3px 6px;
+    padding: 0 6px;
+}
+
+#workspaces button.active {
+	background: rgba(166, 227, 161, 0.36);
+	color: #cdd6f4;
+}
+
+#workspaces button:hover {
+	background: rgba(166, 227, 161, 0.26);
+	color: #cdd6f4;
+}
+
+/* 窗口标题 */
+#window {
+	color: #fab387;
+	font-weight: 500;
+}
+
+/* 模块间距 */
+#workspaces,
+#window,
+#custom-launcher,
+#clock,
+#mpris,
+#cava,
+#network,
+#audio,
+#pulseaudio,
+#pulseaudio-slider,
+#idle_inhibitor,
+#power-profiles-daemon,
+#hardware,
+#backlight,
+#battery,
+#cpu,
+#disk,
+#memory,
+#temperature,
+#power,
+#custom-power,
+#custom-quit,
+#custom-lock,
+#custom-reboot,
+#tray {
+    padding: 0 6px;
+}
+
+/* 模块状态 */
+#custom-launcher:hover,
+#clock:hover,
+#mpris:hover,
+#cava:hover,
+#network:hover,
+#audio:hover,
+#hardware:hover,
+#power:hover,
+#idle_inhibitor:hover,
+#power-profiles-daemon:hover,
+#backlight:hover,
+#battery:hover,
+#tray:hover {
+    background: rgba(137, 180, 250, 0.36);
+/*  transition: all 0.2s ease;  */
+    border-radius: 9px;
+}
+
+/* 电源按钮 */
+#custom-power {
+    font-size: 16px;
+    color: #c92d21;
+}
+#custom-quit {
+	font-size: 16px;
+    color: #fab387;
+}
+#custom-lock {
+	font-size: 16px;
+    color: #89dceb;
+}
+#custom-reboot {
+	font-size: 16px;
+    color: #f38ba8;
+}
+
+/* 电池警告 */
+#battery.critical:not(.charging) {
+    background-color: #f38ba8;
+    color: #1e1e2e;
+}
+
+/* 静音 */
+#pulseaudio.muted {
+    color: #cc0000;
+}
+
+/* 声音滑块 */
+#pulseaudio-slider trough {
+    min-height: 6px;
+    min-width: 65px;
+    border-radius: 9px;
+    background-color: #3a3a3a;
+}
+#pulseaudio-slider highlight {
+    background-color: #a6e3a1;
+    border-radius: 9px;
+}
+#pulseaudio-slider slider {
+    min-height: 0;
+    min-width: 0;
+    border-radius: 9px;
+    background-color: #a6e3a1;
+    border: none;
+    margin: 0;
+    transition: all 0.1s ease;
+}
+
+/* 启动图标 */
+#custom-launcher {
+    color: #00bfff;
+}
+
+/* 空闲抑制 */
+#idle_inhibitor.activated {
+    color: #a6e3a1;
+}
+
+/* 工具提示 */
+tooltip {
+    background: rgba(0, 0, 0, 0.68);
+    border-radius: 9px;
+}

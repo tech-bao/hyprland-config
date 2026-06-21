@@ -1,0 +1,357 @@
+// -*- 格式: jsonc -*-
+
+{
+//	"layer": "top",			// 显示层：顶层
+	"position": "top",		// 位置：top|bottom|left|right
+//	"height": 36,
+//	"width": 1280,
+	"spacing": 5, // 模块间的间隙：4px
+
+	"modules-left": [
+        "hyprland/workspaces"
+//      "hyprland/window"			// 当前桌面标题
+    ],
+    "modules-center": [
+		"custom/launcher",
+        "clock",
+        "mpris"
+//	    "cava"
+    ],
+    "modules-right": [
+    	"network",
+        "group/audio",
+        "idle_inhibitor",
+//  	"power-profiles-daemon",
+//      "backlight",
+//      "battery",
+//      "battery#bat2",
+        "tray",
+        "group/hardware",
+        "group/power"
+    ],
+    
+	
+	"hyprland/workspaces": {
+		"show-special": true,
+		"move-to-monitor": false,
+        "all-outputs": false,
+        "sort-by": "number",
+    	"format": "{icon}[{name}]{windows}",
+  		"format-icons": {
+//      	"1": "",
+//          "2": "",
+          	"special": "",
+          	"active": "",
+          	"default": ""	// 
+		},
+//      "persistent-workspaces": {
+//			"*": 2,				// 只常显示的桌面数
+//          "DP-1": [1, 2, 3]	// 显示器分配的桌面
+//      },
+        
+    		"workspace-taskbar": {
+        		"enable": true,
+        		"on-click": "activate",
+        		"on-click-right": "close",
+        		"update-active-window": true,
+        		"format": "{icon}",
+        		"icon-size": 18,
+        		"icon-theme": "Papirus",
+        		"orientation": "horizontal",
+        		"ignore-list": [
+				".*(?:settings|menu).*",
+        			"kitty"
+        		]
+    		}
+	},
+	
+	"hyprland/window": {
+		"format": "{}",
+		"max-length": 36,
+//		"icon": true,
+//		"icon-size": 18
+	},
+	
+	"custom/launcher": {
+        "format": "",     //
+        "tooltip": true,
+        "tooltip-format": "程序库",
+        "on-click": "pkill wofi || wofi"
+    },
+    
+    "clock": {
+        "locale": "zh_CN.UTF-8",
+        "timezone": "Asia/Shanghai",
+        "interval":1,
+        "format": "{:%H:%M:%S} ",		//  
+        "format-alt": "{:%Y-%m-%d} ",
+        "tooltip-format": "<tt><big>{calendar}</big></tt>",
+        "calendar": {
+            "mode": "month",
+            "mode-mon-col": 3,
+            "format": {
+                "today": "<span color='#ff6699'>{}</span>"
+             }
+        },
+        "actions": {
+            "on-click-right": "mode",
+            //"on-click-forward": "tz_up",
+            //"on-click-backward": "tz_down",
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        }
+    },
+    
+    "mpris": {
+        "interval":1,
+        "format": "{status_icon} {dynamic}",			// {player_icon}
+        "format-paused": "{status_icon} {dynamic}",
+        "format-stopped": "",
+        "status-icons": {
+        		"playing": "<span color='#ff9977'></span>",
+        		"paused": "<span color='#2aa9ff'></span>",
+        		"stopped": ""
+    		},
+        "player-icons": {
+            "default": "",
+            "firefox": "",
+            "chromium": "",
+            "mpv": ""
+    		},
+        "on-click": "playerctl play-pause",
+        "on-scroll-up": "playerctl previous",
+        "on-scroll-down": "playerctl next",
+        "scroll-step": 5,
+        "title-len": 30,
+        "artist-len": 20,
+        "dynamic-len": 30,
+        "ellipsis": "…",
+        "player": "playerctld",
+        "tooltip": false
+    },
+    
+    "cava": {
+       // 如果你想使用独立的cava配置文件，可以取消下面这行的注释
+       // "cava_config": "~/.config/cava/cava.conf",
+       "framerate": 30,             
+       "autosens": 1,              
+       "bars": 10,
+       "lower_cutoff_freq": 50,
+       "higher_cutoff_freq": 10000,
+       "stereo": true,             
+       "reverse": false,           
+       "method": "pipewire",
+       "source": "auto",
+       "input_delay": 2,
+       "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
+       "bar_delimiter": 0,
+       "hide_on_silence": true,
+       "sleep_timer": 3,
+       "actions": {
+           "on-click-right": "mode"
+       },
+       "on-click": "playerctl play-pause",
+       "on-scroll-up": "playerctl previous",
+       "on-scroll-down": "playerctl next"
+    },
+    
+    "group/audio": {
+       "orientation": "inherit",
+       "drawer": {
+           "transition-duration": 300,
+           "children-clip": false,
+           "transition-left-to-right": true,
+       },
+       "modules": [
+           "pulseaudio",
+           "pulseaudio/slider"           
+       ]
+    },
+    "pulseaudio": {
+        // "scroll-step": 1, // %, 可以是百分比
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon}",
+        "format-bluetooth-muted": "󰝟 {icon}",
+        "format-muted": "󰝟",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol",
+        "on-click-right": "pamixer -t"
+    },
+    "pulseaudio/slider": {
+        "min": 0,
+        "max": 100,
+        "orientation": "horizontal"
+    },
+    
+    "group/hardware": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 300,
+            "children-clip": false,
+            "transition-left-to-right": true,
+        },
+        "modules": [
+			"memory",
+			"cpu",
+			"cpu#state",
+        		"disk",
+        		"temperature",
+		]
+    },
+    "cpu": {
+        "format": "{usage}% ",
+        "on-click": "kitty --title btop sh -c 'btop'",
+        "tooltip": false
+    },
+    "cpu#state": {
+        "interval": 1,
+        "on-click": "kitty --title btop sh -c 'btop'",
+        "tooltip": false,
+     	"format": "{icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7}",
+     	"format-icons": [
+        	"<span color='#000000'>▁</span>", // black
+        	"<span color='#2aa9ff'>▂</span>", // blue
+           	"<span color='#69ff94'>▃</span>", // green
+           	"<span color='#69ff94'>▄</span>", // green
+           	"<span color='#ffffa5'>▅</span>", // yellow
+           	"<span color='#ffffa5'>▆</span>", // yellow
+           	"<span color='#ff9977'>▇</span>", // orange
+           	"<span color='#dd532e'>█</span>"  // red
+     	]
+    },
+    "memory": {
+        "format": "{}% ",
+        "tooltip-format": "内存已用：{used:0.1f}GiB/{total}GiB",
+        "on-click": "kitty --title btop sh -c 'btop'"
+    },
+    "disk": {
+        "interval": 30,
+        "on-click": "kitty --title btop sh -c 'btop'",
+	    "format": "{percentage_used:2}% 󰋊",
+	    "path": "/home",
+	    "tooltip": true,
+	    "tooltip-format": "硬盘已用：{used:2}/{total:2}"
+    },
+    "temperature": {
+        // "thermal-zone": 2,
+        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 80,
+        // "format-critical": "{temperatureC}°C {icon}",
+        "format": "{temperatureC}°C {icon}",
+        //"format-icons": ["", "", ""]
+        "format-icons": ["","", "", "",""],
+        "on-click": "kitty --title btop sh -c 'btop'"
+    },
+    
+    "group/power": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 300,
+            "children-clip": false,
+            "transition-left-to-right": false
+        },
+	"modules": [
+	    "custom/power",
+	    "custom/quit",
+        "custom/lock",
+        "custom/reboot"
+	]
+    },
+    "custom/quit": {
+        "format": "󰗼",
+        "spacing": 8,
+        "on-click": "hyprctl dispatch 'hl.dsp.exit()'",
+        "tooltip-format": "注销"
+    },
+    "custom/lock": {
+        "format": "󰍁",
+        "spacing": 8,
+        "on-click": "hyprlock",
+        "tooltip-format": "锁屏"
+    },
+    "custom/reboot": {
+        "format": "󰜉",
+        "spacing": 8,
+        "on-click": "reboot",
+        "tooltip-format": "重启"
+    },
+    "custom/power": {
+        "format": "",
+        "spacing": 8,
+        "on-click": "shutdown now",
+        "tooltip-format": "关机"
+    },
+    
+    "network": {
+        //"on-click": "nm-connection-editor",
+	    "interval": 2,
+        // "interface": "wlp2*", // 强制显示此窗口
+        //"format-wifi": "{essid} ({signalStrength}%) ",
+        //"format-ethernet": "{ipaddr}/{cidr} ",
+        "min-length": 11,
+        "format": "{bandwidthDownBytes:8} 󰇚",
+        "on-click": "nm-connection-editor",
+        "tooltip-format-wifi": " <big><span>{bandwidthDownBytes:8} 󰇚</span>	<span>{bandwidthUpBytes:8} 󰕒</span></big>\n\n网名：{essid} ({signalStrength:2}%) 󰖩 \n信号强度: {signaldBm}dBm ({signalStrength:2}%)\n频率: {frequency:2}MHz\n接口: {ifname}\nIP: {ipaddr}/{cidr}\n网关: {gwaddr}\n掩码: {netmask}",
+        "tooltip-format-ethernet": "<big><span>{bandwidthDownBytes:8} 󰇚</span>		<span>{bandwidthUpBytes:8} 󰕒</span></big>\n\n网名：{essid} ({signalStrength:2}%) 󰈀 \n信号强度: {signaldBm}dBm ({signalStrength:2}%)\n频率: {frequency}MHz\n接口: {ifname}\nIP: {ipaddr}/{cidr}\n网关: {gwaddr}\n掩码: {netmask}",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "未连接 ⚠",
+        //"format-alt": "{bandwidthDownBytes:8} 󰇚"
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "󰅶",
+            "deactivated": "󰤄"
+        },
+        "tooltip-format-activated": "阻止熄屏",
+        "tooltip-format-deactivated": "自动熄屏"
+    },
+    "power-profiles-daemon": {
+        "format": "{icon}",
+        "tooltip-format": "电源模式: {profile}\n驱动: {driver}",
+        "tooltip": true,
+        "format-icons": {
+            "default": "",
+            "performance": "",
+            "balanced": "",
+            "power-saver": ""
+        }
+    },
+    "backlight": {
+        //"device": "acpi_video1",
+        "format": "{percent}% {icon}",
+        "format-icons": ["", "", "", "", "", "", "", "", ""],
+        "on-scroll-up": "brightnessctl s +5%",
+        "on-scroll-down": "brightnessctl s 5%-"
+    },
+    "battery": {
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-full": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
+        // "format-good": "", 
+        // "format-full": "",
+        "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+    },
+    "battery#bat2": {
+        "bat": "BAT2"
+    },
+    "tray": {
+//      "icon-size": 18,
+        "spacing": 8
+    },
+}

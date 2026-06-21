@@ -1,0 +1,60 @@
+/* 主窗口样式 */
+window {
+    margin: 0px;
+    border: 0px solid #33ccff;
+    background-color: rgba(29, 32, 33, 0.6);
+    border-radius: 8px;
+    
+    /* 模糊效果 - 可能需要特定的 compositor 支持 */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+}
+
+/* 输入框样式 */
+#input {
+    margin: 5px;
+    border: none;
+    color: #ebdbb2;
+    background-color: rgba(40, 40, 40, 0.6);
+    border-radius: 8px;
+}
+
+/* 内部框样式 */
+#inner-box {
+    margin: 5px;
+    border: none;
+    background-color: transparent;
+}
+
+/* 外部框样式 */
+#outer-box {
+    margin: 5px;
+    border: none;
+    background-color: transparent;
+}
+
+/* 滚动条样式 */
+#scroll {
+    margin: 0px;
+    border: none;
+}
+
+/* 文本样式 */
+#text {
+    margin: 5px;
+    border: none;
+    color: #ebdbb2;
+}
+
+/* 选中项样式 */
+#entry:selected {
+    background-color: rgba(51, 204, 255, 0.6); /* 选中项背景色 */
+    border-radius: 8px;
+    border: none;
+}
+
+/* 输入框选中文本样式 */
+#input:selected {
+    background-color: rgba(51, 204, 255, 0.6);
+    border: none;
+}
