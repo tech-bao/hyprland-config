@@ -30,7 +30,7 @@
 | **🔊 声音** | `pipewire` `pipewire-pulse` `pavucontrol` `pamixer` `playerctl` | 音频服务 + 控制工具 |
 | **🔤 字体** | `ttf-fira-code` `noto-fonts-emoji` | 代码字体 + Emoji 支持（Maple Mono 手动安装） |
 | **🔔 通知** | `mako` | 轻量通知守护进程 |
-| **🖼️ 壁纸** | `hyprpaper` | 官方支持（Waypaper 暂未收录，可用脚本替代） |
+| **🖼️ 壁纸** | `wpaperd` | 壁纸切换 |
 | **💾 挂载管理** | `udisks2` `ntfs-3g` `gvfs` `hyprpolkitagent` / `polkit-kde-agent` / `mate-polkit` | 自动挂载 + 认证代理 |
 | **⏳ 进程守护** | `hypridle` `power-profiles-daemon` | 空闲管理 + 电源方案 |
 | **🌍 网络管理** | `nm-connection-editor` `network-manager-applet` | NetworkManager 图形界面 |
