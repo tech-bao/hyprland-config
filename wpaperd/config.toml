@@ -1,0 +1,8 @@
+[default]
+# duration = "5m"
+mode = "center"		# fit center stretch
+sorting = "random"	# ascending descending random
+# transition_time = 500		# 默认300ms
+
+[HDMI-A-1]
+path = "/home/baocj/.config/wpaperd/wallpapers"
