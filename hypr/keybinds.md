@@ -19,11 +19,11 @@
 			Win + PrtSc					区域截图
 			Win + Shift + PrtSc			窗口截图
 			Win + Ctrl + PrtSc			全屏截图
-			Win + X						剪切板
+			Win + X						剪贴板
 			
 			Win + S						特殊工作区
 			
-			Win +Num					切换工作区
+			Win + Num					切换工作区
 			Win + 滚轮					切换工作区
 			
 			Win + Shift + Num			移动窗口到相应工作区
